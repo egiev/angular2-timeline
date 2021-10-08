@@ -1,0 +1,32 @@
+<div class="timeline_container">
+  <div class="timeline">
+    <div class="timeline_event_progress_bar">
+      <div
+        class="timeline_event_progress_bar__item"
+        *ngFor="let i of data"
+        [attr.class]="
+          i.end_date
+            ? 'timeline_event_progress_bar__item timeline_event_progress_bar__item--' +
+              i.color
+            : 'timeline_event_progress_bar__item'
+        "
+        [ngStyle]="{
+          left: i.position,
+          width: i.width
+        }"
+      ></div>
+    </div>
+
+    <div class="timeline_event_content">
+      <div
+        [class]="
+          'timeline_event_content__item timeline_event_content__item--' + i.color
+        "
+        *ngFor="let i of data"
+        [ngStyle]="{
+          left: i.position
+        }"
+      ></div>
+    </div>
+  </div>
+</div>
