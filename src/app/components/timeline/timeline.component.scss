@@ -1,96 +1,121 @@
-$timeline_height: 24px;
-$spacer: 20px;
-$pointer_width: 14px;
-$dark_blue: #00115e;
+$timeline_height: 14px;
+$spacer: 14px;
+$pointer_width: 6px;
+$pointer_border_width: 2px;
+
+$navy: #00115e;
 $blue: #24bfe9;
 $red: #f24d55;
 $gray: gray;
 
-.timeline_container {
-  padding: 60px;
-  background: #fff;
+.timeline {
+  height: $timeline_height;
+  width: 100%;
+  position: relative;
 
-  & .timeline {
-    height: $timeline_height;
-    width: 100%;
+  & .timeline_event_progress_bar {
+    height: 100%;
+    width: calc(100% - #{$spacer});
+    margin-left: $spacer;
+    background: #f6f6f6;
+    border-radius: 50px;
     position: relative;
+    overflow: hidden;
 
-    & .timeline_event_content {
-      display: flex;
-      align-items: center;
-      height: 100%;
-      width: calc(100% - #{$spacer});
-      background: transparent;
+    & .timeline_event_progress_bar__item {
       position: absolute;
-      top: 0px;
-
-      & .timeline_event_progress_bar__item {
-        position: absolute;
-        border-radius: 50px;
-        width: $pointer_width;
-        height: $pointer_width;
-        margin-left: calc(#{$pointer_width} - 1px);
-
-        &::before {
-          content: "";
-          position: absolute;
-          display: inline-block;
-          width: 8px;
-          height: 8px;
-          border-radius: 50px;
-          background: #f6f6f6;
-          top: 3px;
-          left: 3px;
-        }
-
-        &:nth-child(1) {
-          background: #f6f6f6;
-          margin-left: 0px;
-          box-shadow: 0px 1px 3px 0px #000;
-
-          &::before {
-            background: $dark_blue;
-          }
-        }
-
-        &--red {
-          background: #f6f6f6;
-          &::before {
-            background: $red;
-          }
-        }
-
-        &--blue {
-          background: $dark_blue;
-        }
-      }
-    }
-
-    & .timeline_event_progress_bar {
       height: 100%;
-      width: calc(100% - #{$spacer});
-      margin-left: $spacer;
-      background: #f6f6f6;
-      border-radius: 50px;
-      position: relative;
-      overflow: hidden;
 
-      & .timeline_event_content__item {
-        position: absolute;
-        height: 100%;
+      &--blue {
+        background: $blue;
+      }
 
-        &--blue {
-          background: $blue;
-        }
+      &--red {
+        background: $red;
+      }
 
-        &--red {
-          background: $red;
-        }
-
-        &--gray {
-          background: $gray;
-        }
+      &--gray {
+        background: $gray;
       }
     }
+  }
+
+  & .timeline_event_content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: calc(100% - #{$spacer});
+    background: transparent;
+    position: absolute;
+    top: 0px;
+
+    & .timeline_event_content__item {
+      position: absolute;
+      border-radius: 50px;
+      width: $pointer_width;
+      height: $pointer_width;
+      margin-left: calc(#{$pointer_width} + #{$pointer_border_width} + 1px);
+      border: #{$pointer_border_width} solid $navy;
+
+      &:nth-child(1) {
+        background: $navy;
+        border-color: #ffffff;
+        margin-left: 0px;
+        box-shadow: 0px 1px 3px 0px rgb(0 0 0 / 30%);
+      }
+
+      &--red {
+        background: $red;
+        border-color: #ffffff;
+      }
+
+      &--blue {
+        background: $navy;
+        border-color: #ffffff;
+      }
+
+      & .timeline_event_content__item__info {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        left: -67px;
+        top: 16px;
+        min-width: 120px;
+        color: $navy;
+        background: #ffffff;
+        opacity: 0;
+        transition: all 0.7s ease;
+        padding: 14px;
+        border-radius: 16px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+        z-index: -1;
+
+        & .name,
+        & .date {
+          margin: 0px;
+          margin-bottom: 2px;
+          font-size: 11px;
+          line-height: 13px;
+        }
+
+        & .date {
+          font-weight: bold;
+        }
+      }
+
+      &:hover .timeline_event_content__item__info {
+        display: flex;
+        opacity: 0.9;
+      }
+    }
+  }
+
+  & .timeline_event_today {
+    position: absolute;
+    background: url("../../../assets/imgs/todays-marker.svg") no-repeat;
+    z-index: 1;
+    width: 27px;
+    height: 54px;
+    top: -14px;
   }
 }
