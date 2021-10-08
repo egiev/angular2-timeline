@@ -26,7 +26,7 @@ export class AppComponent {
     },
     {
       name: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.',
-      color: 'gray',
+      color: 'red',
       start_date: '05/30/2021',
       end_date: '12/15/2021',
     },
