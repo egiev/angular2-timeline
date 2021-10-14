@@ -27,14 +27,14 @@ export class TimelineComponent implements OnInit {
   todayDatePosition: string;
 
   minDate: Date;
-  maxDate: Date;
+  maxDate: Date = new Date();
 
   constructor() {}
 
   ngOnInit(): void {
     // Get date range
     this.minDate = this.getMinDate(this.events);
-    this.maxDate = this.getMaxDate(this.events);
+    // this.maxDate = this.getMaxDate(this.events);
 
     // Get position of the todays date marker
     this.todayDatePosition = this.computePosition(new Date());

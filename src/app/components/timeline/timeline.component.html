@@ -13,27 +13,22 @@
           left: i.position,
           width: i.barWidth
         }"
-      ></div>
-    </div>
-
-    <div class="timeline_event_content">
-      <div
-        [class]="
-          'timeline_event_content__item timeline_event_content__item--' +
-          i.color
-        "
-        *ngFor="let i of data"
-        [ngStyle]="{
-          left: i.position
-        }"
       >
-        <div class="timeline_event_content__item__info">
-          <p class="date">{{ i.start_date | date: "mediumDate" }}</p>
-          <p class="name">{{ i.name }}</p>
+        <div class="timeline_event_content">
+          <div
+            [class]="
+              'timeline_event_content__item timeline_event_content__item--' +
+              i.color
+            "
+          >
+            <div class="timeline_event_content__item__info">
+              <p class="date">{{ i.start_date | date: "mediumDate" }}</p>
+              <p class="name">{{ i.name }}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
     <div
       class="timeline_event_today"
       [ngStyle]="{ left: todayDatePosition }"
