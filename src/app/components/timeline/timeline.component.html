@@ -4,10 +4,8 @@
       <div
         *ngFor="let i of data"
         [attr.class]="
-          i.end_date
-            ? 'timeline_event_progress_bar__item timeline_event_progress_bar__item--' +
-              i.color
-            : 'timeline_event_progress_bar__item'
+          'timeline_event_progress_bar__item timeline_event_progress_bar__item--' +
+          i.color
         "
         [ngStyle]="{
           left: i.position,
@@ -36,7 +34,7 @@
 
     <div
       class="timeline_event_today"
-      [ngStyle]="{ left: todayDatePosition }"
+      [ngStyle]="{ left: 'calc(' + todayDatePosition + ' - 13px)' }"
     ></div>
   </div>
 </div>
